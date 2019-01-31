@@ -1,1 +1,1 @@
-Noise Harmonizer for guitarists 
+Noise Harmonizer for guitarists
