@@ -28,16 +28,18 @@
 {
   width:100%;
   height:55px;
-  background-color:#8A2BE2;
+  background-color:#8b9dc3;
   display:flex;
   justify-content:center;
   align-items:center;
   margin-top:25px;
-  font-size:35px;
+  font-size:40px;
   color:grey;
   font-family:Arial;
   color:white;
   border:0.5px solid black;
+  padding:0px;
+  color:#F5FFFA;
 }
 
 .pass
@@ -63,7 +65,8 @@
   height:70%;
   width:25%;
   margin-bottom:25px;
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 2px 2px 2px black;
+  border-radius:2px;
 
 }
 
@@ -78,6 +81,7 @@ input
   color:grey;
   font-family:Arial;
   text-align:left;
+  padding-left:20px;
 }
 
 .block
@@ -91,14 +95,14 @@ input
 
 
 
-.logo-container
+/*.logo-container
 {
   display:flex;
   flex:1;
   flex-direction:column;
   align-items:center;
   justify-content:flex-start;
-  margin-top:20px;
+  margin-top:20px;*/
 
 
 }
@@ -109,11 +113,10 @@ input
   font-weight:bold;
   font-size:100px;
   color:white;
-  background-color:tomato;
+  background-color:#8b9dc3;
   padding:0px 20px 0px 20px;
   border: 10px double white;
   text-shadow: 1px 1px silver;
-  box-shadow: 2px 2px whitesmoke;
   -moz-border-radius:75px;
   -webkit-border-radius: 75px;
   /* Prevent background color leak outs */
@@ -124,6 +127,5 @@ input
 
 body
 {
-  background-color:rgba(255, 0, 0, 0.6);
-
+  background-color:#3b5998;
 }

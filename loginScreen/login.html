@@ -8,14 +8,14 @@
 
         <div class="container">
             <form class="form-container">
-                <div class="logo">H</div>
-                <div class="uname">
-                  <input placeholder="Username"></input>
+                <div class="logo"></div>
+                <div class="uname" id="username">
+                  <input type="text" placeholder="Username" onfocus="this.placeholder=''" onblur="this.placeholder='Username'" ></input>
                 </div>
-                <div class="pass">
-                  <input type="text" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='enter your text'" />
+                <div class="pass" id="password">
+                  <input type="text" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" />
                 </div>
-                <button  type="text/css" value="submit"class="submit">Login</button>
+                <input  type="submit" value="LOGIN "class="submit"/>
             </form>
         </div>
 
