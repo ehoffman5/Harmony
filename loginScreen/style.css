@@ -13,7 +13,7 @@ body {
 
 /* begin header styles */
 header {
-  background-color: #55d6aa;
+  background-color: #00F8FF;
   text-align: center;
   padding: 20px;
 }
@@ -24,6 +24,23 @@ header::after {
   display: table;
   clear: both;
 }
+
+.button {
+    background-color: #FF6200;
+    border: none;
+    color: #fff;
+    padding: 15px 32px;
+    margin: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .button:hover {
+      background-color: #B24500;
+      color: #eee;
+  }
 
 #logo {
   float: left;
@@ -66,4 +83,35 @@ main ul {
   margin: 0px;
   padding: 0px;
   list-style: none;
+}
+
+/* styles for welcome page */
+.big-title {
+    font-size: 8rem;
+    margin-bottom: 0px;
+    margin-top: 70px;
+}
+
+.big-title-container {
+    padding-bottom: 30px;
+}
+
+.sm-hr {
+    align-content: center;
+    width: 25%;
+    border: 5px solid #000;
+    height: 3px;
+}
+
+.welcome-button {
+    width: 200px;
+}
+
+#img-bg {
+    background-image: url("C:/Users/Eric/Desktop/harmony-bg.jpg");
+    background-color: #fff;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
