@@ -1,15 +1,69 @@
-.tabBar
-{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content: center;
-  justify-content: space-evenly;
+body {
+  margin: 0px;
+  background: #eee;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
 }
 
-.tab
-{
-  background-color:green;
-  width:25%;
-  height:100px;
+/* ensures content stays 20% away from left of screen */
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* begin header styles */
+header {
+  background-color: #55d6aa;
+  text-align: center;
+  padding: 20px;
+}
+
+/* prevents header background from disappearing */
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+#logo {
+  float: left;
+  padding: 10px 0px;
+}
+
+.topnav {
+  float: right;
+}
+
+.topnav ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.topnav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 25px;
+}
+
+.topnav a {
+  color: #444;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+/* begin main styles */
+main {
+  text-align: center;
+}
+
+main ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
 }
