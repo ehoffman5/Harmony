@@ -1,8 +1,12 @@
 body {
   margin: 0px;
   background: #eee;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Overpass', sans-serif;
 }
 
 /* ensures content stays 20% away from left of screen */
@@ -35,6 +39,8 @@ header::after {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    box-shadow: 5px 7px 12px -5px rgba(0,0,0,0.75);
+    border-radius: 10px;
   }
 
   .button:hover {
@@ -87,13 +93,18 @@ main ul {
 
 /* styles for welcome page */
 .big-title {
-    font-size: 8rem;
-    margin-bottom: 0px;
-    margin-top: 70px;
+    font-size: 7rem;
+    margin-bottom: 20px;
+    
 }
 
 .big-title-container {
-    padding-bottom: 30px;
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+.bottom-container {
+    padding-bottom: 100px;
 }
 
 .sm-hr {
@@ -101,6 +112,7 @@ main ul {
     width: 25%;
     border: 5px solid #000;
     height: 3px;
+    margin-bottom: 20px;
 }
 
 .welcome-button {
@@ -108,10 +120,15 @@ main ul {
 }
 
 #img-bg {
-    background-image: url("C:/Users/Eric/Desktop/harmony-bg.jpg");
+    background-image: url("img/harmony-bg.jpg");
     background-color: #fff;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#welcome-logo {
+    margin-top: -30px;
+    margin-bottom: -60px;
 }
