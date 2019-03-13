@@ -40,7 +40,6 @@ header::after {
     display: inline-block;
     font-size: 16px;
     box-shadow: 5px 7px 12px -5px rgba(0,0,0,0.75);
-    border-radius: 10px;
   }
 
   .button:hover {
@@ -116,6 +115,7 @@ main ul {
 }
 
 .welcome-button {
+    font-size: 18px;
     width: 200px;
 }
 
