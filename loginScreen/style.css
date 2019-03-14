@@ -1,6 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
   margin: 0px;
-  background: #eee;
+  background: #fff;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
@@ -12,22 +17,26 @@ h1, h2, h3, h4, h5, h6 {
 /* ensures content stays 20% away from left of screen */
 .container {
   width: 80%;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 
 /* begin header styles */
 header {
   background-color: #00F8FF;
-  text-align: center;
-  padding: 20px;
+  padding: 5px;
+  box-shadow: 0px -5px 32px 5px rgba(0,0,0,0.75);
+}
+
+.nav-item {
+    float: right;
 }
 
 /* prevents header background from disappearing */
 header::after {
-  content: '';
-  display: table;
-  clear: both;
-}
+    content: '';
+    display: table;
+    clear: both;
+  }
 
 .button {
     background-color: #FF6200;
@@ -47,38 +56,6 @@ header::after {
       color: #eee;
   }
 
-#logo {
-  float: left;
-  padding: 10px 0px;
-}
-
-.topnav {
-  float: right;
-}
-
-.topnav ul {
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
-}
-
-.topnav li {
-  display: inline-block;
-  margin-left: 70px;
-  padding-top: 25px;
-}
-
-.topnav a {
-  color: #444;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-.topnav a:hover {
-  color: #000;
-  background-color: #fff;
-}
-
 /* begin main styles */
 main {
   text-align: center;
@@ -94,7 +71,7 @@ main ul {
 .big-title {
     font-size: 7rem;
     margin-bottom: 20px;
-    
+    margin-top: 40px;
 }
 
 .big-title-container {
@@ -104,14 +81,16 @@ main ul {
 
 .bottom-container {
     padding-bottom: 100px;
+    margin-top: 80px;
 }
 
 .sm-hr {
-    align-content: center;
-    width: 25%;
+    align-content: center !important;
+    margin-left: 37%;
+    margin-right: 37%;
+    margin-bottom: 20px;
     border: 5px solid #000;
     height: 3px;
-    margin-bottom: 20px;
 }
 
 .welcome-button {
@@ -130,5 +109,19 @@ main ul {
 
 #welcome-logo {
     margin-top: -30px;
-    margin-bottom: -60px;
+    margin-bottom: -35px;
+    margin-right: 8px;
+    height: 180px;
+}
+
+/* Begin Main Page Styles */
+.nav-logo {
+    padding: 0px 0px;
+    margin-right: 5px;
+    height: 60px;
+    padding-top: 10px;
+}
+
+.medium-title {
+    font-size: 4rem;
 }
