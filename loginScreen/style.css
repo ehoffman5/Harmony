@@ -5,7 +5,7 @@
 
 body {
   margin: 0px;
-  background: white;
+  background: #fff;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
@@ -24,10 +24,26 @@ h1, h2, h3, h4, h5, h6 {
 header {
   background-color: #3F3D3D;
   padding: 5px;
-  box-shadow: 0px -5px 32px 5px rgba(0,0,0,0.75);
+  box-shadow: 0px -5px 20px 5px rgba(0,0,0,0.75);
+  display: flex;
 }
 
-.nav-item {
+.h-box {
+    flex: 1;
+}
+
+.h-box-1 {
+    float: left;
+}
+
+.h-box-2 {
+    color: #eee;
+    margin-left: 15px;
+    margin-top: 30px;
+    float: left;
+}
+
+.h-box-3 {
     float: right;
 }
 
@@ -39,7 +55,7 @@ header::after {
   }
 
 .button {
-    background-color: #e67e22;
+    background-color: #FF772E;
     border: none;
     color: #fff;
     padding: 15px 32px;
@@ -48,12 +64,11 @@ header::after {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    /*box-shadow: 5px 7px 12px -5px rgba(0,0,0,0.75);*/
   }
 
   .button:hover {
-      box-shadow: 5px 5px 5px -7px rgba(253, 252, 252, 0.75);
       color: #eee;
+      background-color: #B24910;
   }
 
 
@@ -77,8 +92,8 @@ main ul {
 }
 
 .big-title-container {
-    padding-top: 70px;
-    padding-bottom: 50px;
+    margin-top: 155px;
+    margin-bottom: 30px;
 }
 
 .bottom-container {
@@ -98,6 +113,7 @@ main ul {
 .welcome-button {
     font-size: 18px;
     width: 200px;
+    box-shadow: 5px 7px 12px -5px rgba(0,0,0,0.75);
 }
 
 #img-bg {
@@ -110,10 +126,11 @@ main ul {
 }
 
 #welcome-logo {
-    margin-top: -30px;
-    margin-bottom: -35px;
+    margin-top: -15px;
+    margin-bottom: 15px;
     margin-right: 8px;
     height: 180px;
+    align-content: center;
 }
 
 
@@ -136,7 +153,14 @@ main ul {
 .note-button {
     margin: 0;
     font-size: 2em;
-    border-radius: 50px;
+    border-radius: 52px;
+    box-shadow: 5px 7px 8px -5px rgba(0,0,0,0.75);
+    line-height: 52px;
+}
+
+#guitar {
+    height: 500px;
+    width: auto;
 }
 
 
@@ -151,7 +175,7 @@ main ul {
 }
 
 .box-1, .box-3 {
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .box-2 {
@@ -164,4 +188,14 @@ main ul {
 
 .box-3 {
     text-align: left;
+}
+
+
+/* RESPONSIVE QUERIES */
+@media only screen and (max-width: 600px) {
+    #welcome-logo {width: 400px; height: auto;}
+    #guitar {height: 350px; width: auto;}
+    .box-2 {margin: 50px 0px;}
+    .h-box-2 {float: right; clear: right}
+    .h-box-3 {float: none; align-content: center; margin: 35px 0px 10px 0px;}
 }
