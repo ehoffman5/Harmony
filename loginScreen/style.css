@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0px auto;
 }
 
-/* begin header styles */
+/* BEGIN HEADER STYLES */
 header {
   background-color: #3F3D3D;
   padding: 5px;
@@ -72,7 +72,7 @@ header::after {
   }
 
 
-/* begin main styles */
+/* BEGIN MAIN SECTION STYLES */
 main {
   text-align: center;
 }
@@ -84,7 +84,7 @@ main ul {
 }
 
 
-/* styles for welcome page */
+/* BEGIN WELCOME PAGE STYLES */
 .big-title {
     font-size: 7rem;
     margin-bottom: 20px;
@@ -134,7 +134,7 @@ main ul {
 }
 
 
-/* Begin Main Page Styles */
+/* BEGIN TUNE-BY-EAR STYLES */
 .nav-logo {
     padding: 0px 0px;
     margin-right: 5px;
@@ -164,7 +164,7 @@ main ul {
 }
 
 
-/* FlexBox Styles */
+/* FLEXBOX STYLES */
 .flex-container {
     margin-top: 20px;
     display: flex;
@@ -192,10 +192,32 @@ main ul {
 
 
 /* RESPONSIVE QUERIES */
+/* phones */
 @media only screen and (max-width: 600px) {
     #welcome-logo {width: 400px; height: auto;}
-    #guitar {height: 350px; width: auto;}
-    .box-2 {margin: 50px 0px;}
-    .h-box-2 {float: right; clear: right}
-    .h-box-3 {float: none; align-content: center; margin: 35px 0px 10px 0px;}
+    #guitar {height: 350px;}
+    .flex-container {margin-top: 0px;}
+    .box-1 {margin-left: 5px;}
+    .box-2 {margin: 55px -25px;}
+    .box-3 {margin-right: 5px;}
+    .h-box-2 {display: none;}
+    .h-box-3 {margin: 15px -5px 15px 0px;}
+}
+
+/* tablets */
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+    #welcome-logo {width: 500px; height: auto;}
+    #guitar {height: 425px;}
+    .flex-container {margin-top: 10px;}
+    .box-1 {margin-left: 5px; margin-top: 45px;}
+    .box-2 {margin: 30px -15px;}
+    .box-3 {margin-right: 5px; margin-top: 45px;}
+    .h-box-3 {margin: 15px -5px 15px 0px;}
+}
+
+/* small-screen desktops */
+@media only screen and (min-width: 992px) and (max-width: 1300px) {
+    .box-1 {margin-left: 5px; margin-top: 40px;}
+    .box-2 {margin: 0px -20px;}
+    .box-3 {margin-right: 5px; margin-top: 40px;}
 }
