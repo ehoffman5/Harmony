@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+canvas {
+    border: #000 solid 1px;
+}
+
 body {
   margin: 0px;
   background: #fff;
