@@ -2,8 +2,8 @@
 
 var context = new AudioContext();
 var analyser = context.createAnalyser();
-var WIDTH = 300;
-var HEIGHT = 300;
+var WIDTH = 600;
+var HEIGHT = 600;
 
 function playSound() {
     var osc = context.createOscillator();
@@ -21,49 +21,37 @@ function playSound() {
     analyser.connect(context.destination);
 }
 
+
 var canvas = document.querySelector('.visualizer');
 var myCanvas = canvas.getContext("2d");
 
-analyser.fftSize = 2048;
-
-var bufferLength = analyser.frequencyBinCount; 
-// an unsigned long value half that of the FFT size
-// This generally equates to the number of data values you will have to play with for the visualization
-
+analyser.fftSize = 256;
+var bufferLength = analyser.frequencyBinCount;
+console.log(bufferLength);
 var dataArray = new Uint8Array(bufferLength);
 
 myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
 
 function draw() {
-  drawVisual = requestAnimationFrame(draw);
-  
-  analyser.getByteTimeDomainData(dataArray);
-  
-  myCanvas.fillStyle = 'rgb(230, 20, 210)';
-  myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
-  myCanvas.lineWidth = 2;
-  myCanvas.strokeStyle = 'rgb(40, 95, 95)';
-  myCanvas.beginPath();
-  
-  var sliceWidth = WIDTH * 1.0 / bufferLength;
-  var x = 0;
-  
-  for(var i = 0; i < bufferLength; i++) {
-   
-        var v = dataArray[i] / 128.0;
-        var y = v * HEIGHT/2;
+    drawVisual = requestAnimationFrame(draw);
 
-        if(i === 0) {
-          myCanvas.moveTo(x, y);
-        } else {
-          myCanvas.lineTo(x, y);
-        }
+    analyser.getByteFrequencyData(dataArray);
 
-        x += sliceWidth;
-      };
-  
-  myCanvas.lineTo(canvas.width, canvas.height/2);
-      myCanvas.stroke();
+    myCanvas.fillStyle = 'rgb(0, 0, 0)';
+    myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
+
+    var barWidth = (WIDTH / bufferLength) * 2.5;
+    var barHeight;
+    var x = 0;
+
+    for(var i = 0; i < bufferLength; i++) {
+      barHeight = dataArray[i];
+
+      myCanvas.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)';
+      myCanvas.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+
+      x += barWidth + 1;
+    }
 };
 
 var analyserButton = document.getElementById("myAnalyserButton")
@@ -72,81 +60,3 @@ analyserButton.addEventListener('click', function() {
   playSound();
   draw();
 });
-
-/*
-// Create the Audio Context
-
-var context = new AudioContext();
-var analyser = context.createAnalyser();
-var WIDTH = 300;
-var HEIGHT = 300;
-
-// Create your oscillator, filter and gain node by declaring them as variables
-
-var osc = context.createOscillator();
-
-osc.frequency.value = 500;
-
-// Connect the nodes together
-
-function makeConnection() {
-    osc.connect(analyser);
-}
-
-// Play the sound inside of Chrome
-
-function playSound() {
-    analyser.connect(context.destination);
-    osc.start(0);
-    osc.stop(3);
-}
-
-makeConnection();
-playSound();
-
-var canvas = document.querySelector('.visualizer');
-var myCanvas = canvas.getContext("2d");
-
-analyser.fftSize = 2048;
-var bufferLength = analyser.frequencyBinCount; //an unsigned long value half that of the FFT size. This generally equates to the number of data values you will have to play with for the visualization
-var dataArray = new Uint8Array(bufferLength);
-
-analyser.getByteTimeDomainData(dataArray); 
-
-console.log(dataArray);
-
-myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
-
-function draw() {
-  drawVisual = requestAnimationFrame(draw);
-  analyser.getByteTimeDomainData(dataArray);
-  
-  myCanvas.fillStyle = 'rgb(200, 200, 200)';
-  myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
-  myCanvas.lineWidth = 2;
-      myCanvas.strokeStyle = 'rgb(0, 0, 0)';
-
-      myCanvas.beginPath();
-  var sliceWidth = WIDTH * 1.0 / bufferLength;
-      var x = 0;
-  
-  for(var i = 0; i < bufferLength; i++) {
-   
-        var v = dataArray[i] / 128.0;
-        var y = v * HEIGHT/2;
-
-        if(i === 0) {
-          myCanvas.moveTo(x, y);
-        } else {
-          myCanvas.lineTo(x, y);
-        }
-
-        x += sliceWidth;
-      };
-  
-  myCanvas.lineTo(canvas.width, canvas.height/2);
-      myCanvas.stroke();
-    };
-
-draw();
-*/
