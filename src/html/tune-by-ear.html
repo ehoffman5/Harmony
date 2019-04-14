@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../assets/css/style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Overpass|Roboto" rel="stylesheet">
-
+    <script src="../js/audioplayer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.core.min.js"></script>
     <!-- favicon code -->
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/fav/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/fav/favicon-32x32.png">
@@ -18,6 +19,9 @@
     <!-- jQuery file hosted by Google -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../js/effects.js"></script>
+    
+
+
   </head>
 
   <body>
@@ -31,6 +35,8 @@
         </div>
     </header>
 
+    <button id="test-btn">test button</button>
+
     <main>
         <div class="top-title">
                 <h2><i>Click below to play a reference note.</i></h2>
@@ -38,13 +44,13 @@
         </div>
         <div class="flex-container">
             <div class="box box-1">
-                <a href="#" class="button note-button">D</a>
+                <a href="#" onclick="PlaySound('Dout')" class="button note-button">D</a>
                 <br/>
                 <br/>
-                <a href="#" class="button note-button">A</a>
+                <a href="#" onclick="PlaySound('Aout')"  id="btn-A" class="button note-button">A</a>
                 <br/>
                 <br/>
-                <a href="#" class="button note-button">E</a>
+                <a href="#" onclick="PlaySound('E2out')" id="btn-El" class="button note-button">E</a>
                 <br/>
                 <br/>
             </div>
@@ -52,17 +58,30 @@
                 <img src="../../assets/img/guitar-head.png" alt="guitar" id="guitar">
             </div>
             <div class="box box-3">
-                <a href="#" class="button note-button">G</a>
+                <a href="#"  onclick="PlaySound('Gout')" id="btn-G" class="button note-button">G</a>
                 <br/>
                 <br/>
-                <a href="#" class="button note-button">B</a>
+                <a href="#" onclick="PlaySound('Bout')" id="btn-B" class="button note-button">B</a>
                 <br/>
                 <br/>
-                <a href="#" class="button note-button">E</a>
+                <a href="#" onclick="PlaySound('E4out')" id="btn-Eh" class="button note-button">E</a>
                 <br/>
                 <br/>
             </div>
         </div>
     </main>
+    <script>
+                
+            let count = 0;
+            
+                function PlaySound(melody) {
+                        var callback = melody
+                        var path = "../../assets/sounds/"
+                        var audio= new Audio(path + melody + ".mp3");
+                        audio.play();
+                    
+                    }
+               
+    </script>
   </body>
 </html>
