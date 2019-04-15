@@ -142,6 +142,12 @@ main ul {
     align-content: center;
 }
 
+/* audio wave canvas styles */
+#analyser_render {
+    height: 750px;
+    margin-bottom: -750px;
+}
+
 
 /* BEGIN TUNE-BY-EAR STYLES */
 .nav-logo {
