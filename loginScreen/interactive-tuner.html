@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Overpass|Roboto" rel="stylesheet">
     <script src="home.js"></script>
+    <script src="audioProcessor.js"></script>
 
     <!-- favicon code -->
     <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png">
@@ -28,7 +29,28 @@
     </header>
 
     <main>
-
+      <div class="top-title">
+          <h1><u>Interactive Tuner</u></h1>
+          <br/>
+      </div>
+      <script>
+          //use dispatchAudioData method to retrieve most recent info
+          //run once pages loads, continues to run/loop
+          document.addEventListener('DOMContentLoaded', audioProcessor.dispatchAudioData(), {
+            //retrieve data
+          }, false);
+      </script>
+      <div>
+          <br/>
+          <h2>(Frequency)</h2>
+          <h3> <!-- text updates live, observer pattern? --> </h3>
+          <br/>
+          <h2>(Nearest Note)</h2>
+            <h3> <!-- text updates live, observer pattern? --> </h3>
+          <br/>
+          <h3>(Cents away)</h3>  
+            <h4> <!-- text updates live, observer pattern? --> </h4>        
+      </div>
     </main>
   </body>
 </html>
