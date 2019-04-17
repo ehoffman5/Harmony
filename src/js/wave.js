@@ -37,9 +37,9 @@ function frameLooper(){
     bars = 100;
 
     for (var i = 0; i < bars; i++) {
-        bar_x = i * 4;
-        bar_width = 2;
-        bar_height = -(fbc_array[i] / 2);
+        bar_x = i * 6;
+        bar_width = 4;
+        bar_height = -(fbc_array[i] / 5);
         
         //  fillRect( x, y, width, height )
         ctx.fillRect(bar_x, canvas.height, bar_width, bar_height);

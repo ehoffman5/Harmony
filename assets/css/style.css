@@ -144,9 +144,18 @@ main ul {
 
 
 /* audio wave canvas styles */
+#mp3_player {
+    text-align: center;
+    align-content: center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 #analyser_render {
     height: 800px;
+    width: 100%;
     margin-bottom: -800px;
+    display: block;
     overflow: hidden;
     border: none;
 }
