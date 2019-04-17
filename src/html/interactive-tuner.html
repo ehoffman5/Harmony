@@ -31,9 +31,17 @@
             </nav>
         </div>
     </header>
-
-    <main>
-
-    </main>
+    <div class="containertwo" height="100%" style="border:1px solid black">
+    <canvas id="myCanvas" width="200px" height="300px" style="border:1px solid black"></canvas>
+    </div>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      var width = canvas.width;
+      var height = canvas.height;
+      ctx.moveTo(0, 150);
+      ctx.lineTo(300, 0);
+      ctx.stroke();
+    </script>
   </body>
 </html>

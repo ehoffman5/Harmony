@@ -125,6 +125,14 @@ main ul {
     box-shadow: 5px 7px 12px -5px rgba(0,0,0,0.75);
 }
 
+.containertwo
+{
+    display:flex; 
+    justify-content:center;
+    flex-flow:row;
+    height:100%;
+}
+
 #welcome {
     /* background-image: url("img/harmony-bg.jpg"); */
     background-color: #fff;
