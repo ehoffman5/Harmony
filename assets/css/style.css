@@ -126,7 +126,7 @@ main ul {
 }
 
 #welcome {
-    background-image: url("../img/harmony-bg.jpg");
+    /* background-image: url("../img/harmony-bg.jpg"); */
     background-color: #fff;
     height: 100%;
     background-position: center;
@@ -144,14 +144,12 @@ main ul {
 
 
 /* audio wave canvas styles */
-/*
 #analyser_render {
     height: 800px;
     margin-bottom: -800px;
     overflow: hidden;
     border: none;
 }
-*/
 
 
 /* BEGIN TUNE-BY-EAR STYLES */
