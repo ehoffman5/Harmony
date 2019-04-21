@@ -5,6 +5,7 @@ audio.src = 'wish-you-were-here.wav';
 audio.controls = true;
 audio.loop = true;
 audio.autoplay = true;  // automatically plays upon page load
+// audio.crossOrigin = "anonymous";
 // audio.muted = true;
 
 // Establish all variables that your Analyser will use
@@ -47,3 +48,6 @@ function frameLooper(){
         ctx.fillRect(bar_x, canvas.height, bar_width, bar_height);
     }
 }
+
+// may have to go to chrome://flags/#autoplay-policy and change autoplay options for this to work in Chrome
+// also need to run from server for Chrome or else CORS won't allow autoplay for audio
