@@ -16,6 +16,7 @@ function initMp3Player(){
     document.getElementById('audio_box').appendChild(audio);
     context = new AudioContext(); // AudioContext object instance
     analyser = context.createAnalyser(); // AnalyserNode method
+    GainNode = context.createGain()
     canvas = document.getElementById('analyser_render');
     ctx = canvas.getContext('2d');
     
@@ -23,6 +24,8 @@ function initMp3Player(){
     source = context.createMediaElementSource(audio); 
     source.connect(analyser);
     analyser.connect(context.destination);
+    source.connect(GainNode);
+    GainNode.gain.value = 0;
     frameLooper();
 }
 
