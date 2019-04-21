@@ -134,7 +134,7 @@ main ul {
 }
 
 #welcome {
-    /* background-image: url("img/harmony-bg.jpg"); */
+    /* background-image: url("../img/harmony-bg.jpg"); */
     background-color: #fff;
     height: 100%;
     background-position: center;
@@ -148,6 +148,24 @@ main ul {
     margin-right: 8px;
     height: 180px;
     align-content: center;
+}
+
+
+/* audio wave canvas styles */
+#mp3_player {
+    text-align: center;
+    align-content: center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#analyser_render {
+    height: 800px;
+    width: 100%;
+    margin-bottom: -800px;
+    display: block;
+    overflow: hidden;
+    border: none;
 }
 
 

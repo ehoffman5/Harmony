@@ -1,152 +1,47 @@
-// Create the Audio Context
+// Special thanks to this video for walking through the code: https://www.youtube.com/watch?v=IBHpSkGZtNM
+// Create a new instance of an audio object and adjust some of its properties
+var audio = new Audio();
+audio.src = 'Eulogy.mp3';
+audio.controls = true;
+audio.loop = true;
+audio.autoplay = true;  // automatically plays upon page load
+// audio.muted = true;
 
-var context = new AudioContext();
-var analyser = context.createAnalyser();
-var WIDTH = 300;
-var HEIGHT = 300;
+// Establish all variables that your Analyser will use
+var canvas, ctx, source, context, analyser, fbc_array, bars, bar_x, bar_width, bar_height;
 
-function playSound() {
-    var osc = context.createOscillator();
-    osc.frequency.value = 60;
-    osc.type = 'square';
+// Initialize the MP3 player after the page loads all of its HTML into the window
+window.addEventListener("load", initMp3Player, false);
+function initMp3Player(){
+    document.getElementById('audio_box').appendChild(audio);
+    context = new AudioContext(); // AudioContext object instance
+    analyser = context.createAnalyser(); // AnalyserNode method
+    canvas = document.getElementById('analyser_render');
+    ctx = canvas.getContext('2d');
     
-    oscGain = context.createGain();
-    oscGain.gain.value = 0.2;
-
-    osc.start(context.currentTime);
-    osc.stop(context.currentTime + 3);
-
-    osc.connect(oscGain);   
-    oscGain.connect(analyser); // Connect oscillator to analyser node
+    // Re-route audio playback into the processing graph of the AudioContext
+    source = context.createMediaElementSource(audio); 
+    source.connect(analyser);
     analyser.connect(context.destination);
+    frameLooper();
 }
 
-var canvas = document.querySelector('.visualizer');
-var myCanvas = canvas.getContext("2d");
+// frameLooper() animates any style of graphics you wish to the audio frequency
+// Looping at the default frame rate that the browser provides(approx. 60 FPS)
+function frameLooper(){
+    window.requestAnimationFrame(frameLooper);
+    fbc_array = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(fbc_array);
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    ctx.fillStyle = '#3F3D3D'; // Color of the bars
+    bars = 100;
 
-analyser.fftSize = 2048;
-
-var bufferLength = analyser.frequencyBinCount; 
-// an unsigned long value half that of the FFT size
-// This generally equates to the number of data values you will have to play with for the visualization
-
-var dataArray = new Uint8Array(bufferLength);
-
-myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
-
-function draw() {
-  drawVisual = requestAnimationFrame(draw);
-  
-  analyser.getByteTimeDomainData(dataArray);
-  
-  myCanvas.fillStyle = 'rgb(230, 20, 210)';
-  myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
-  myCanvas.lineWidth = 2;
-  myCanvas.strokeStyle = 'rgb(40, 95, 95)';
-  myCanvas.beginPath();
-  
-  var sliceWidth = WIDTH * 1.0 / bufferLength;
-  var x = 0;
-  
-  for(var i = 0; i < bufferLength; i++) {
-   
-        var v = dataArray[i] / 128.0;
-        var y = v * HEIGHT/2;
-
-        if(i === 0) {
-          myCanvas.moveTo(x, y);
-        } else {
-          myCanvas.lineTo(x, y);
-        }
-
-        x += sliceWidth;
-      };
-  
-  myCanvas.lineTo(canvas.width, canvas.height/2);
-      myCanvas.stroke();
-};
-
-var analyserButton = document.getElementById("myAnalyserButton")
-
-analyserButton.addEventListener('click', function() {
-  playSound();
-  draw();
-});
-
-/*
-// Create the Audio Context
-
-var context = new AudioContext();
-var analyser = context.createAnalyser();
-var WIDTH = 300;
-var HEIGHT = 300;
-
-// Create your oscillator, filter and gain node by declaring them as variables
-
-var osc = context.createOscillator();
-
-osc.frequency.value = 500;
-
-// Connect the nodes together
-
-function makeConnection() {
-    osc.connect(analyser);
+    for (var i = 0; i < bars; i++) {
+        bar_x = i * 6;
+        bar_width = 4;
+        bar_height = -(fbc_array[i] / 5);
+        
+        //  fillRect( x, y, width, height )
+        ctx.fillRect(bar_x, canvas.height, bar_width, bar_height);
+    }
 }
-
-// Play the sound inside of Chrome
-
-function playSound() {
-    analyser.connect(context.destination);
-    osc.start(0);
-    osc.stop(3);
-}
-
-makeConnection();
-playSound();
-
-var canvas = document.querySelector('.visualizer');
-var myCanvas = canvas.getContext("2d");
-
-analyser.fftSize = 2048;
-var bufferLength = analyser.frequencyBinCount; //an unsigned long value half that of the FFT size. This generally equates to the number of data values you will have to play with for the visualization
-var dataArray = new Uint8Array(bufferLength);
-
-analyser.getByteTimeDomainData(dataArray); 
-
-console.log(dataArray);
-
-myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
-
-function draw() {
-  drawVisual = requestAnimationFrame(draw);
-  analyser.getByteTimeDomainData(dataArray);
-  
-  myCanvas.fillStyle = 'rgb(200, 200, 200)';
-  myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
-  myCanvas.lineWidth = 2;
-      myCanvas.strokeStyle = 'rgb(0, 0, 0)';
-
-      myCanvas.beginPath();
-  var sliceWidth = WIDTH * 1.0 / bufferLength;
-      var x = 0;
-  
-  for(var i = 0; i < bufferLength; i++) {
-   
-        var v = dataArray[i] / 128.0;
-        var y = v * HEIGHT/2;
-
-        if(i === 0) {
-          myCanvas.moveTo(x, y);
-        } else {
-          myCanvas.lineTo(x, y);
-        }
-
-        x += sliceWidth;
-      };
-  
-  myCanvas.lineTo(canvas.width, canvas.height/2);
-      myCanvas.stroke();
-    };
-
-draw();
-*/

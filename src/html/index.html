@@ -21,18 +21,23 @@
   </head>
   <body id="welcome" class="fadein">
     <main>
+        <div id="mp3_player">
+            <div id="audio_box"></div>
+            <canvas id="analyser_render"></canvas>
+        </div>
+        
         <div class="big-title-container">
             <img src="../../assets/img/harmony-logo-full.png" alt="logo" id="welcome-logo">
             <hr class="sm-hr">
             <h1>Guitar tuning made easy.</h1>
-            <!-- <canvas class="visualizer" id="myCanvas" width="640" height="600"></canvas>
-            <button id="myAnalyserButton" class="button">CLICK</button>
-            <script src="../js/wave.js"> type="text/javascript"</script> -->
         </div>
+
         <div class="bottom-container">
             <a href="interactive-tuner.html" class="button welcome-button">INTERACTIVE TUNER</a>
             <a href="tune-by-ear.html" class="button welcome-button">TUNE BY EAR</a>
         </div>
     </main>
+
+    <script src="../js/wave.js"></script>
   </body>
 </html>
