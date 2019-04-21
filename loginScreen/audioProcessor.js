@@ -6,9 +6,64 @@
 class AudioProcessor {
 
   constructor () {
-    // Defer normal constructor behavior to created because we're only
-    // allowed to take the prototype with us from the class.
-    Polymer(AudioProcessor.prototype);
+    this.FFTSIZE = 2048;
+    this.stream = null;
+    this.audioContext = new AudioContext();
+    this.analyser = this.audioContext.createAnalyser();
+    this.gainNode = this.audioContext.createGain();
+    this.microphone = null;
+
+    this.gainNode.gain.value = 0;
+    this.analyser.fftSize = this.FFTSIZE;
+    this.analyser.smoothingTimeConstant = 0;
+
+    this.frequencyBufferLength = this.FFTSIZE;
+    this.frequencyBuffer = new Float32Array(this.frequencyBufferLength);
+
+    this.strings = {
+      e2: {
+        offset: Math.round(this.audioContext.sampleRate / 82.4069),
+        difference: 0
+      },
+
+      a2: {
+        offset: Math.round(this.audioContext.sampleRate / 110),
+        difference: 0
+      },
+
+      d3: {
+        offset: Math.round(this.audioContext.sampleRate / 146.832),
+        difference: 0
+      },
+
+      g3: {
+        offset: Math.round(this.audioContext.sampleRate / 195.998),
+        difference: 0
+      },
+
+      b3: {
+        offset: Math.round(this.audioContext.sampleRate / 246.932),
+        difference: 0
+      },
+
+      e4: {
+        offset: Math.round(this.audioContext.sampleRate / 329.628),
+        difference: 0
+      }
+    };
+
+    this.stringsKeys = Object.keys(this.strings);
+
+    this.lastRms = 0;
+    this.rmsThreshold = 0.006;
+    this.assessedStringsInLastFrame = false;
+    this.assessStringsUntilTime = 0;
+
+    // Bind as we would have done for anything in the constructor so we can use
+    // them without confusing what 'this' means. Yay window scoped.
+    this.dispatchAudioData = this.dispatchAudioData.bind(this);
+    this.sortStringKeysByDifference = this.sortStringKeysByDifference.bind(this);
+    this.onVisibilityChange = this.onVisibilityChange.bind(this);
   }
 
   get is () {

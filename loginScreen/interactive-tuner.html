@@ -33,18 +33,23 @@
           <h1><u>Interactive Tuner</u></h1>
           <br/>
       </div>
-      <script>
-          //use dispatchAudioData method to retrieve most recent info
-          //run once pages loads, continues to run/loop
-          document.addEventListener('DOMContentLoaded', audioProcessor.dispatchAudioData(), {
-            //retrieve data
-          }, false);
+      <script type="text/javascript">
+
+          const processor = new AudioProcessor();
+          processor.requestUserMedia();
+          console.log("aP loaded");
+          
       </script>
       <div>
+          <!--observes this.fire from 'processor'-->
           <br/>
           <h2>(Frequency)</h2>
-          <h3> <!-- text updates live, observer pattern? --> </h3>
-          <br/>
+          <div id = "Frequency">
+            <p>number goes here</p> 
+         </div>
+         <br />
+
+
           <h2>(Nearest Note)</h2>
             <h3> <!-- text updates live, observer pattern? --> </h3>
           <br/>
