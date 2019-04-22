@@ -340,7 +340,6 @@ class AudioProcessor {
       //requestAnimationFrame(this.dispatchAudioData);
 
     let frequency = this.autocorrelateAudioData(time);
-    this.lastFreq = frequency;
 
     if (frequency === 0)
       return;
@@ -361,7 +360,6 @@ class AudioProcessor {
     // The note is 0 for A, all the way to 11 for G#.
     let note = (12 + (Math.round(semitonesFromA4) % 12)) % 12;
 
-    console.log("help");
     // Now tell anyone who's interested.
     this.lastFreq = frequency;
     this.lastOctave = octave;
