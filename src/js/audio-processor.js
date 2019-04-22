@@ -69,6 +69,7 @@ class AudioProcessor {
       this.lastFreq = 100;
       this.lastOctave = 0;
       this.lastNote = 0;
+      this.centsAway = 0;
     }
   
     get is () {
@@ -262,6 +263,7 @@ class AudioProcessor {
       }
   
       this.lastRms = rms;
+      this.centsAway = Math.trunc(smallestDifference*100);
   
       return this.audioContext.sampleRate / actualFrequency;
   

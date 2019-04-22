@@ -42,8 +42,8 @@
           <h3>(Nearest Note)</h3>
           <p id = "Note">Text element</p>
           <br/>
-          <h3>(Instruction)</h3>  
-          <p id = "Instruction"></p>      
+          <h3>(Cents Away)</h3>  
+          <p id = "Cents"></p>      
       </div>
       <script type="text/javascript">
         const processor = new AudioProcessor();
@@ -63,6 +63,7 @@
           processor.dispatchAudioData(d.getTime());
           document.getElementById("Frequency").innerHTML = proxied.lastFreq + "hz";
           document.getElementById("Note").innerHTML = noteNumbers[proxied.lastNote] + (proxied.lastOctave);
+          document.getElementById("Cents").innerHTML = proxied.centsAway + "cts";
         }
       </script>
     </main>
