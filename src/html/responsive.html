@@ -1,0 +1,32 @@
+
+<html>
+  <head>
+    <title>meter</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/meter.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+<body>
+<canvas style="border:1px solid #000000;" width="500" id="soundBar"></canvas>
+<script>
+  var canvas = document.getElementById("soundBar")
+  var ctx = canvas.getContext("2d")
+  var x = 225;
+  animation()
+
+  function animation(){
+
+     requestAnimationFrame(animation)
+     //establishes callback loop
+
+     ctx.clearRect(0,0,innerWidth,innerHeight)
+     ctx.beginPath()
+     ctx.fillRect(x,50,5,50)
+     var width = ctx.width;
+     var height = ctx.height;
+     ctx.stroke()
+     x+= 1
+  }
+
+</script>
+</body>
+</html>
