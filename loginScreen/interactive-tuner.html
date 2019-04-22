@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Overpass|Roboto" rel="stylesheet">
     <script src="home.js"></script>
-    <script src="audioProcessor.js"></script>
+    <script src="audio-processor.js"></script>
 
     <!-- favicon code -->
     <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png">
@@ -43,8 +43,8 @@
           <p id = "Note">Text element</p>
           <p id = "Octave">Text element</p>
           <br/>
-          <h3>(Cents away)</h3>  
-          <p id = "cents">Text element</p>      
+          <h3>(Instruction)</h3>  
+          <p id = "Instruction">Text element</p>      
       </div>
       <script type="text/javascript">
         const processor = new AudioProcessor();
@@ -55,11 +55,11 @@
           }
         });
         processor.requestUserMedia();
-        console.log("aP loaded");
+        console.log("ap loaded");
         var d = new Date();
-        var update_loop = setInterval(Main, 100);
+        var update_loop = setInterval(Main, 250);
 
-        Main();
+        //Main();
         function Main(){
           processor.dispatchAudioData(d.getTime());
           document.getElementById("Frequency").innerHTML = proxied.lastFreq;
