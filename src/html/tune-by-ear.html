@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Harmony | Tune by Ear</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Overpass|Roboto" rel="stylesheet">
+    <script src="../js/audioplayer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.core.min.js"></script>
+    <!-- favicon code -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/fav/favicon-16x16.png">
+    <link rel="manifest" href="../../assets/fav/site.webmanifest">
+    <link rel="mask-icon" href="../../assets/fav/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- jQuery file hosted by Google -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../js/effects.js"></script>
+
+
+
+  </head>
+
+  <body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html"><img src="../../assets/img/harmony-logo-invert.png" alt="logo" class="nav-logo h-box-1">
+                <h1 class="header-box h-box-2">TUNE BY EAR</h1></a>
+                <a href="interactive-tuner.html" class="button h-box-3">INTERACTIVE TUNER &nbsp ►</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="top-title">
+                <h2><i>Click below to play a reference note.</i></h2>
+                <br/>
+        </div>
+        <div class="flex-container">
+            <div class="box box-1">
+                <a href="#" onclick="PlaySound('Dout')" class="button note-button">D</a>
+                <br/>
+                <br/>
+                <a href="#" onclick="PlaySound('Aout')"  id="btn-A" class="button note-button">A</a>
+                <br/>
+                <br/>
+                <a href="#" onclick="PlaySound('E2out')" id="btn-El" class="button note-button">E</a>
+                <br/>
+                <br/>
+            </div>
+            <div class="box box-2">
+                <img src="../../assets/img/guitar-head.png" alt="guitar" id="guitar">
+            </div>
+            <div class="box box-3">
+                <a href="#"  onclick="PlaySound('Gout')" id="btn-G" class="button note-button">G</a>
+                <br/>
+                <br/>
+                <a href="#" onclick="PlaySound('Bout')" id="btn-B" class="button note-button">B</a>
+                <br/>
+                <br/>
+                <a href="#" onclick="PlaySound('E4out')" id="btn-Eh" class="button note-button">E</a>
+                <br/>
+                <br/>
+            </div>
+        </div>
+    </main>
+    <script>
+
+            let count = 0;
+
+                function PlaySound(melody) {
+                        var callback = melody
+                        var path = "../../assets/sounds/"
+                        var audio= new Audio(path + melody + ".mp3");
+                        audio.play();
+
+                    }
+
+    </script>
+  </body>
+</html>
