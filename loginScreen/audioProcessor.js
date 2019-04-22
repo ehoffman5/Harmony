@@ -64,6 +64,11 @@ class AudioProcessor {
     this.dispatchAudioData = this.dispatchAudioData.bind(this);
     this.sortStringKeysByDifference = this.sortStringKeysByDifference.bind(this);
     this.onVisibilityChange = this.onVisibilityChange.bind(this);
+
+    //added
+    this.lastFreq = 100;
+    this.lastOctave = 0;
+    this.lastNote = 0;
   }
 
   get is () {
@@ -331,10 +336,11 @@ class AudioProcessor {
     // Always set up the next pass here, because we could
     // early return from this pass if there's not a lot
     // of exciting data to deal with.
-    if (this.sendingAudioData)
-      requestAnimationFrame(this.dispatchAudioData);
+    //if (this.sendingAudioData)
+      //requestAnimationFrame(this.dispatchAudioData);
 
     let frequency = this.autocorrelateAudioData(time);
+    this.lastFreq = frequency;
 
     if (frequency === 0)
       return;
@@ -355,8 +361,12 @@ class AudioProcessor {
     // The note is 0 for A, all the way to 11 for G#.
     let note = (12 + (Math.round(semitonesFromA4) % 12)) % 12;
 
+    console.log("help");
     // Now tell anyone who's interested.
-    this.fire('audio-data', { frequency, octave, note });
+    this.lastFreq = frequency;
+    this.lastOctave = octave;
+    this.lastNote = note;
+    //this.fire('audio-data', { frequency, octave, note });
   }
 }
 

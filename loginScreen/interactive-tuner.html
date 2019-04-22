@@ -33,29 +33,46 @@
           <h1><u>Interactive Tuner</u></h1>
           <br/>
       </div>
-      <script type="text/javascript">
-
-          const processor = new AudioProcessor();
-          processor.requestUserMedia();
-          console.log("aP loaded");
-          
-      </script>
       <div>
-          <!--observes this.fire from 'processor'-->
+          <!--observes this.fire from 'processor'   processor.lastFreq -->
           <br/>
           <h2>(Frequency)</h2>
-          <div id = "Frequency">
-            <p>number goes here</p> 
-         </div>
-         <br />
-
-
+          <p id = "Frequency">Text element</p>
+          <br />
           <h2>(Nearest Note)</h2>
-            <h3> <!-- text updates live, observer pattern? --> </h3>
+          <p id = "Note">Text element</p>
+          <p id = "Octave">Text element</p>
           <br/>
           <h3>(Cents away)</h3>  
-            <h4> <!-- text updates live, observer pattern? --> </h4>        
+          <p id = "cents">Text element</p>      
       </div>
+      <script type="text/javascript">
+        const processor = new AudioProcessor();
+        var proxied = new Proxy(processor, {
+          get: function(target, prop) {
+            console.log({ type: 'get', target, prop });
+            return Reflect.get(target, prop);
+          }
+        });
+        processor.requestUserMedia();
+        console.log("aP loaded");
+        var d = new Date();
+        var update_loop = setInterval(Main, 500);
+
+        Main();
+        function Main(){
+          processor.dispatchAudioData(d.getTime());
+          document.getElementById("Frequency").innerHTML = proxied.lastFreq;
+          document.getElementById("Note").innerHTML = proxied.lastNote;
+          document.getElementById("Octave").innerHTML = proxied.lastOctave;
+        }
+        
+        // window.addEventListener('DOMContentLoaded', (event) => {
+        //   console.log('DOM fully loaded and parsed');
+        //   processor.dispatchAudioData(d.getTime());
+        //   document.getElementById("Frequency").innerHTML = processor.lastFreq;
+        // });
+      </script>
     </main>
   </body>
 </html>
