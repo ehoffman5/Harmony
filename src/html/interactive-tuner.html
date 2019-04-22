@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Harmony | Tune by Ear</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Overpass|Roboto" rel="stylesheet">
+    <script src="../js/audio-processor.js"></script>
+
+    <!-- favicon code -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/fav/favicon-16x16.png">
+    <link rel="manifest" href="../../assets/fav/site.webmanifest">
+    <link rel="mask-icon" href="../../assets/fav/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+
+  <body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html"><img src="../../assets/img/harmony-logo-invert.png" alt="logo" class="nav-logo h-box-1">
+                <h1 class="header-box h-box-2">INTERACTIVE TUNER</h1></a>
+                <a href="tune-by-ear.html" class="button h-box-3">TUNE BY EAR &nbsp ►</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+      <div class="top-title">
+          <h1><u>Interactive Tuner</u></h1>
+          <br/>
+      </div>
+      <div>
+          <!--observes this.fire from 'processor'   processor.lastFreq -->
+          <br/>
+          <h2>(Frequency)</h2>
+          <p id = "Frequency">Text element</p>
+          <br />
+          <h2>(Nearest Note)</h2>
+          <p id = "Note">Text element</p>
+          <p id = "Octave">Text element</p>
+          <br/>
+          <h3>(Instruction)</h3>  
+          <p id = "Instruction">Text element</p>      
+      </div>
+      <script type="text/javascript">
+        const processor = new AudioProcessor();
+        var proxied = new Proxy(processor, {
+          get: function(target, prop) {
+            console.log({ type: 'get', target, prop });
+            return Reflect.get(target, prop);
+          }
+        });
+        processor.requestUserMedia();
+        console.log("ap loaded");
+        var d = new Date();
+        var update_loop = setInterval(Main, 250);
+
+        //Main();
+        function Main(){
+          processor.dispatchAudioData(d.getTime());
+          document.getElementById("Frequency").innerHTML = proxied.lastFreq;
+          document.getElementById("Note").innerHTML = proxied.lastNote;
+          document.getElementById("Octave").innerHTML = proxied.lastOctave;
+        }
+        
+        // window.addEventListener('DOMContentLoaded', (event) => {
+        //   console.log('DOM fully loaded and parsed');
+        //   processor.dispatchAudioData(d.getTime());
+        //   document.getElementById("Frequency").innerHTML = processor.lastFreq;
+        // });
+      </script>
+    </main>
+  </body>
+</html>
