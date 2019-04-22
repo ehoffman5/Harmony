@@ -39,12 +39,11 @@
           <h2>(Frequency)</h2>
           <p id = "Frequency">Text element</p>
           <br />
-          <h2>(Nearest Note)</h2>
+          <h3>(Nearest Note)</h3>
           <p id = "Note">Text element</p>
-          <p id = "Octave">Text element</p>
           <br/>
           <h3>(Instruction)</h3>  
-          <p id = "Instruction">Text element</p>      
+          <p id = "Instruction"></p>      
       </div>
       <script type="text/javascript">
         const processor = new AudioProcessor();
@@ -57,21 +56,14 @@
         processor.requestUserMedia();
         console.log("ap loaded");
         var d = new Date();
-        var update_loop = setInterval(Main, 250);
-
-        //Main();
+        var update_loop = setInterval(Main, 100);
+        const noteNumbers = ["A", "A#","B","C","C#","D","D#","E","F","F#","G","G#"];
         function Main(){
           processor.dispatchAudioData(d.getTime());
-          document.getElementById("Frequency").innerHTML = proxied.lastFreq;
-          document.getElementById("Note").innerHTML = proxied.lastNote;
-          document.getElementById("Octave").innerHTML = proxied.lastOctave;
+          document.getElementById("Frequency").innerHTML = proxied.lastFreq + "hz";
+          document.getElementById("Note").innerHTML = noteNumbers[proxied.lastNote] + (proxied.lastOctave);
         }
         
-        // window.addEventListener('DOMContentLoaded', (event) => {
-        //   console.log('DOM fully loaded and parsed');
-        //   processor.dispatchAudioData(d.getTime());
-        //   document.getElementById("Frequency").innerHTML = processor.lastFreq;
-        // });
       </script>
     </main>
   </body>

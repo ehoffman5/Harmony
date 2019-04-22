@@ -86,8 +86,6 @@ class AudioProcessor {
         this.analyser.connect(this.gainNode);
         this.gainNode.connect(this.audioContext.destination);
   
-        requestAnimationFrame(this.dispatchAudioData);
-  
       }, (err) => {
   
       });
@@ -176,7 +174,7 @@ class AudioProcessor {
         this.assessStringsUntilTime = time + 250;
   
       if (time < this.assessStringsUntilTime) {
-  
+        
         this.assessedStringsInLastFrame = true;
   
         // Go through each string and figure out which is the most
@@ -274,8 +272,6 @@ class AudioProcessor {
       // Always set up the next pass here, because we could
       // early return from this pass if there's not a lot
       // of exciting data to deal with.
-      //if (this.sendingAudioData)
-        //requestAnimationFrame(this.dispatchAudioData);
   
       let frequency = this.autocorrelateAudioData(time);
   
