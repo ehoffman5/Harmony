@@ -55,15 +55,15 @@
         });
         processor.requestUserMedia();
         console.log("ap loaded");
-        var d = new Date();
-        var update_loop = setInterval(Main, 100);
+        
+        var update_loop = setInterval(Main, 250);
         const noteNumbers = ["A", "A#","B","C","C#","D","D#","E","F","F#","G","G#"];
         function Main(){
+          var d = new Date();
           processor.dispatchAudioData(d.getTime());
           document.getElementById("Frequency").innerHTML = proxied.lastFreq + "hz";
           document.getElementById("Note").innerHTML = noteNumbers[proxied.lastNote] + (proxied.lastOctave);
         }
-        
       </script>
     </main>
   </body>
