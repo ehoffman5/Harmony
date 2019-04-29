@@ -1,6 +1,8 @@
 /**
  * Source: Google Archive
  * https://github.com/googlearchive/guitar-tuner/blob/master/src/elements/audio-processor/audio-processor.js
+ * 
+ * Modifed, reduced, refactored to fit the requirements of our project 
  * */ 
 
 class AudioProcessor {
@@ -70,10 +72,6 @@ class AudioProcessor {
       this.lastOctave = 0;
       this.lastNote = 0;
       this.centsAway = 0;
-    }
-  
-    get is () {
-      return 'audio-processor';
     }
   
     requestUserMedia () {
