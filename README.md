@@ -23,10 +23,3 @@ Connect your microphone to the browser and play the string you would like to tun
 
 ## Technologies
 HTML, CSS, JavaScript, jQuery, Web Audio API
-
-
-
-## Constraints and Works in Progress
-* Welcome page audio visualizer does not work on Chrome
-* Interactive tuner only works on Edge
-* Interactive tuner GUI unfinished
