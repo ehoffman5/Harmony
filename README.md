@@ -2,6 +2,8 @@
 
  This is the official repository of Harmony, the online interactive guitar tuner.
 
+![harmony](https://user-images.githubusercontent.com/35542660/57243565-1538da80-6ffc-11e9-946d-0d64c37c96bc.PNG)
+
 
 
 ## Installation
